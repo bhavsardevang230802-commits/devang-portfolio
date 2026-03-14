@@ -63,6 +63,7 @@ color:black;
 
 .btn-main:hover{
 background:white;
+color:black;
 }
 
 .section{
@@ -74,16 +75,25 @@ color:#38bdf8;
 margin-bottom:50px;
 }
 
+/* CARD STYLE */
+
 .card{
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
+border:2px solid white;
 border-radius:20px;
+color:white;
 transition:0.4s;
+}
+
+.card h5,
+.card p{
+color:white;
 }
 
 .card:hover{
 transform:translateY(-12px);
-box-shadow:0 10px 40px rgba(56,189,248,0.4);
+border-color:#38bdf8;
+box-shadow:0 0 20px #38bdf8;
 }
 
 footer{
@@ -110,6 +120,7 @@ background:#020617;
 
 </div>
 </nav>
+
 
 <section class="hero">
 
@@ -138,6 +149,7 @@ Download Resume
 </div>
 
 </section>
+
 
 
 <section class="section" id="skills">
@@ -176,6 +188,7 @@ Download Resume
 </section>
 
 
+
 <section class="section" id="projects">
 
 <div class="container">
@@ -205,6 +218,7 @@ Download Resume
 </section>
 
 
+
 <section class="section text-center" id="contact">
 
 <div class="container">
@@ -228,9 +242,9 @@ LinkedIn
 </footer>
 
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
 <script>
@@ -239,7 +253,12 @@ AOS.init();
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth/window.innerHeight,
+0.1,
+1000
+);
 
 const renderer = new THREE.WebGLRenderer({
 canvas:document.querySelector('#bg')
@@ -247,10 +266,15 @@ canvas:document.querySelector('#bg')
 
 renderer.setSize(window.innerWidth,window.innerHeight);
 
-camera.position.z=5;
+camera.position.z = 5;
 
 const geometry = new THREE.TorusGeometry(10,3,16,100);
-const material = new THREE.MeshBasicMaterial({color:0x38bdf8,wireframe:true});
+
+const material = new THREE.MeshBasicMaterial({
+color:0x38bdf8,
+wireframe:true
+});
+
 const torus = new THREE.Mesh(geometry,material);
 
 scene.add(torus);
@@ -259,8 +283,8 @@ function animate(){
 
 requestAnimationFrame(animate);
 
-torus.rotation.x+=0.01;
-torus.rotation.y+=0.005;
+torus.rotation.x += 0.01;
+torus.rotation.y += 0.005;
 
 renderer.render(scene,camera);
 
